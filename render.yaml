@@ -1,0 +1,17 @@
+services:
+  - type: worker
+    name: starz-promosyon
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m app.main
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: DATABASE_PATH
+        value: /data/starz_promosyon.db
+    disk:
+      name: starz-promosyon-data
+      mountPath: /data
+      sizeGB: 1
